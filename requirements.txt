@@ -1,4 +1,7 @@
 numpy
 pandas
 matplotlib
+python-dotenv
+mysql-connector-python
+pymysql
 # -e .
