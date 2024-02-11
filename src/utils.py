@@ -3,6 +3,8 @@ import sys
 from src.exception import CustomException
 from src.logger import logging
 import pandas as pd
+
+
 import pymysql
 from dotenv import load_dotenv
 
@@ -23,6 +25,9 @@ def read_sql_data():
             db=db
         )
         logging.info("connection established with database",mydb)
+        df = pd.read_sql_query('Select * from diamonds',mydb)
+        print(df.head())
+        return df
     except Exception as ex:
         raise CustomException(ex,sys)
 
