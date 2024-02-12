@@ -7,4 +7,6 @@ pymysql
 scikit-learn
 dill
 ipykernel
+catboost
+xgboost
 # -e .
