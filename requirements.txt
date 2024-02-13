@@ -9,4 +9,5 @@ dill
 ipykernel
 catboost
 xgboost
+dvc 
 # -e .
