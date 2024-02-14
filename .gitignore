@@ -10,6 +10,8 @@ __pycache__/
 # artifacts/
 mlruns/
 templates/
+secret_info.txt
+
 # Distribution / packaging
 .Python
 build/
