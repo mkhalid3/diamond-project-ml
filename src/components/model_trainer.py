@@ -24,6 +24,10 @@ from src.utils import evaluate_models
 from src.utils import print_evaluated_results
 from src.utils import model_metrics
 
+from urllib.parse import urlparse
+import mlflow
+import mlflow.sklearn
+
 @dataclass 
 class ModelTrainerConfig:
     trained_model_file_path = os.path.join ('artifacts','model.pkl')
@@ -32,7 +36,7 @@ class ModelTrainer:
     def __init__(self):
         self.model_trainer_config = ModelTrainerConfig()
     
-    def initate_model_training(self,train_array,test_array):
+    def initiate_model_training(self,train_array,test_array):
         try:
             logging.info('Splitting Dependent and Independent variables from train and test data')
             X_train, y_train, X_test, y_test = (
@@ -133,6 +137,36 @@ class ModelTrainer:
             print('Final Model Evaluation :\n')
             print_evaluated_results(X_train,y_train,X_test,y_test,vr)
             logging.info('Voting Regressor Training Completed')
+
+            #this code need for mlflow
+            #set url for mlflow
+            mlflow.set_registry_uri("https://dagshub.com/codemaestro908/diamond-project-ml.mlflow")
+            tracking_url_type_store = urlparse(mlflow.get_tracking_uri()).scheme
+            
+            #start MLFlow from here because we want to track experiments
+
+            with mlflow.start_run():
+                predicted_qualities = best_model.predict(X_test)
+                
+                (rmse,mae,r2) = model_metrics(y_test, predicted_qualities)
+                
+                # mlflow.log_params(best_params_)
+
+                mlflow.log_metric("rmse",rmse)
+                mlflow.log_metric("r2", r2)
+                mlflow.log_metric("mae",mae)
+
+                #model registry does not work with file store
+                if tracking_url_type_store !="file":
+                    #Register the model
+                    #These are other ways to use the model registry,
+                    #please refer to the more information
+
+                    mlflow.sklearn.log_model(best_model, "model", registered_model_name = best_model_name)
+                
+                else:
+                    mlflow.sklearn.log_model(best_model, "model")
+            #end mlflow code
 
             save_object(
                 file_path=self.model_trainer_config.trained_model_file_path,
