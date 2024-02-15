@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Gemstone Price Prediction</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Diamond Price Prediction</title>
+    <link rel="stylesheet" href="/CSS/style.css">
   </head>
   <body>
-    <a href="https://github.com/utkarshg1/mlproject_regression" class="top-left-link" target="_blank">GitHub Repository Link</a>
-    <h1>Gemstone Price Prediction - Utkarsh Gaikwad</h1>
-    <img src="{{url_for('static', filename='/Image/your_profile_pic.jpg')}}" alt="Your Profile Picture" class="profile">
+    <a href="https://github.com/codemaestro908/diamond-project-ml" class="top-left-link" target="_blank">GitHub Repository Link</a>
+    <h1>Diamond Price Prediction</h1>
+    <!-- <img src="{{url_for('static', filename='/Image/your_profile_pic.jpg')}}" alt="Your Profile Picture" class="profile"> -->
     <div class="form-box">
     <form action="{{url_for('predict_datapoint')}}" method="POST">
         <div class="form-group">
@@ -84,7 +84,7 @@
     </div>
     <div>      
     <h2>
-      Predicted Gemstone Price is : {{ results }}
+      Predicted Price of Diamond : {{ results }}
     </h2>
   </body>
 </html>

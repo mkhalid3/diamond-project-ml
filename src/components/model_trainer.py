@@ -140,32 +140,32 @@ class ModelTrainer:
 
             #this code need for mlflow
             #set url for mlflow
-            mlflow.set_registry_uri("https://dagshub.com/codemaestro908/diamond-project-ml.mlflow")
-            tracking_url_type_store = urlparse(mlflow.get_tracking_uri()).scheme
+            # mlflow.set_registry_uri("https://dagshub.com/codemaestro908/diamond-project-ml.mlflow")
+            # tracking_url_type_store = urlparse(mlflow.get_tracking_uri()).scheme
             
-            #start MLFlow from here because we want to track experiments
+            # #start MLFlow from here because we want to track experiments
 
-            with mlflow.start_run():
-                predicted_qualities = best_model.predict(X_test)
+            # with mlflow.start_run():
+            #     predicted_qualities = best_model.predict(X_test)
                 
-                (rmse,mae,r2) = model_metrics(y_test, predicted_qualities)
+            #     (rmse,mae,r2) = model_metrics(y_test, predicted_qualities)
                 
-                # mlflow.log_params(best_params_)
+            #     # mlflow.log_params(best_params_)
 
-                mlflow.log_metric("rmse",rmse)
-                mlflow.log_metric("r2", r2)
-                mlflow.log_metric("mae",mae)
+            #     mlflow.log_metric("rmse",rmse)
+            #     mlflow.log_metric("r2", r2)
+            #     mlflow.log_metric("mae",mae)
 
-                #model registry does not work with file store
-                if tracking_url_type_store !="file":
-                    #Register the model
-                    #These are other ways to use the model registry,
-                    #please refer to the more information
+            #     #model registry does not work with file store
+            #     if tracking_url_type_store !="file":
+            #         #Register the model
+            #         #These are other ways to use the model registry,
+            #         #please refer to the more information
 
-                    mlflow.sklearn.log_model(best_model, "model", registered_model_name = best_model_name)
+            #         mlflow.sklearn.log_model(best_model, "model", registered_model_name = best_model_name)
                 
-                else:
-                    mlflow.sklearn.log_model(best_model, "model")
+            #     else:
+            #         mlflow.sklearn.log_model(best_model, "model")
             #end mlflow code
 
             save_object(

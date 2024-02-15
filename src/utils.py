@@ -5,7 +5,7 @@ from src.exception import CustomException
 from src.logger import logging
 import pandas as pd
 
-import pymysql
+# import pymysql
 from dotenv import load_dotenv
 
 import dill
