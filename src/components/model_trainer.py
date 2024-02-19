@@ -24,9 +24,9 @@ from src.utils import evaluate_models
 from src.utils import print_evaluated_results
 from src.utils import model_metrics
 
-from urllib.parse import urlparse
-import mlflow
-import mlflow.sklearn
+# from urllib.parse import urlparse
+# import mlflow
+# import mlflow.sklearn
 
 @dataclass 
 class ModelTrainerConfig:
