@@ -19,14 +19,15 @@ def predict_datapoint():
     else:
         data = CustomData(
             carat = float(request.form.get('carat')),
+            cut = request.form.get('cut'),
+            color= request.form.get('color'),
+            clarity = request.form.get('clarity'),
             depth = float(request.form.get('depth')),
             table = float(request.form.get('table')),
             x = float(request.form.get('x')),
             y = float(request.form.get('y')),
-            z = float(request.form.get('z')),
-            cut = request.form.get('cut'),
-            color= request.form.get('color'),
-            clarity = request.form.get('clarity')
+            z = float(request.form.get('z'))
+            
         )
 
         pred_df = data.get_data_as_dataframe()
@@ -44,14 +45,15 @@ def predict_api():
     if request.method=='POST':
         data = CustomData(
             carat = float(request.json['carat']),
+            cut = request.json['cut'],
+            color = request.json['color'],
+            clarity = request.json['clarity'],
             depth = float(request.json['depth']),
             table = float(request.json['table']),
             x = float(request.json['x']),
             y = float(request.json['y']),
-            z = float(request.json['z']),
-            cut = request.json['cut'],
-            color = request.json['color'],
-            clarity = request.json['clarity']
+            z = float(request.json['z'])
+            
         )
 
         pred_df = data.get_data_as_dataframe()
@@ -62,4 +64,4 @@ def predict_api():
         return jsonify(dct)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8000)
+    app.run(host='0.0.0.0', debug=True)
