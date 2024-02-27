@@ -63,5 +63,5 @@ def predict_api():
         dct = {'price':round(pred[0],2)}
         return jsonify(dct)
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0')
+# if __name__ == '__main__':
+#     app.run(host='0.0.0.0')
