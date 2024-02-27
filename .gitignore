@@ -8,10 +8,10 @@ __pycache__/
 
 #personal
 mlruns/
-templates/
+# templates/
 secret_info.txt
 # .ebextensions/python.config
-
+catboost_info/
 # Distribution / packaging
 .Python
 build/
