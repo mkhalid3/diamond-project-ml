@@ -11,6 +11,7 @@ __pycache__/
 mlruns/
 templates/
 secret_info.txt
+.ebextensions/python.config
 
 # Distribution / packaging
 .Python
