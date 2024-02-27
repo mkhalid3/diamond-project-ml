@@ -58,7 +58,7 @@ class CustomData:
                 'clarity':[self.clarity]
             }
             df = pd.DataFrame(custom_data_input_dict)
-            logging.info('Dataframe Gathered')
+            logging.info('Dataframe collected')
             return df
         except Exception as e:
             logging.info('Exception Occured in prediction pipeline')
