@@ -7,11 +7,10 @@ __pycache__/
 *.so
 
 #personal
-# artifacts/
 mlruns/
 templates/
 secret_info.txt
-.ebextensions/python.config
+# .ebextensions/python.config
 
 # Distribution / packaging
 .Python
