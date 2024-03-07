@@ -70,8 +70,6 @@ def evaluate_models(X_train,y_train,X_test,y_test,models):
             train_model_score = r2_score(y_train,y_train_pred)
             test_model_score = r2_score(y_test,y_test_pred)
             
-            # if test_model_score<=1:
-            #     test_model_score=test_model_score*0.998
 
             report[list(models.keys())[i]] =  test_model_score
 
